@@ -1,8 +1,12 @@
 import axios from 'axios';
 
+// 요청 시 공통설정 내용 등록
+const instance = axios.create({
+  baseURL: process.env.VUE_APP_API_URL,
+});
+
 function registerUser(userData) {
-  const url = 'http://localhost:3000/signup';
-  return axios.post(url, userData);
+  return instance.post('signup', userData);
 }
 
 export { registerUser };
