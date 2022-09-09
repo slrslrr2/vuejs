@@ -6,6 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     username: '',
+    token: '',
   },
   getters: {
     // 해당 값의 변화를 감지한다(computed같은것)
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     clearUsername(state) {
       state.username = '';
+    },
+    setToken(state, token) {
+      state.token = token;
     },
   },
 });
