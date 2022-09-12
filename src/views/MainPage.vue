@@ -11,6 +11,9 @@
         ></PostListItem>
       </ul>
     </div>
+    <router-link to="/add" class="create-button">
+      <i class="icon ion-md-add"></i>
+    </router-link>
   </div>
 </template>
 
