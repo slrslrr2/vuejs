@@ -15,7 +15,7 @@
           </p>
         </div>
         <button type="submit" class="btn">
-          Create
+          Updated
         </button>
       </form>
       <p class="log">{{ errorMessage }}</p>
@@ -24,10 +24,11 @@
 </template>
 
 <script>
-import { createPost } from '@/api/posts';
+import { getPost, editPost } from '@/api/posts';
 export default {
   data() {
     return {
+      id: this.$route.params.id,
       title: '',
       contents: '',
       errorMessage: '',
@@ -42,15 +43,23 @@ export default {
     async submitForm() {
       try {
         const postData = {
+          _id: this.id,
           title: this.title,
           contents: this.contents,
         };
-        await createPost(postData);
+
+        const { data } = await editPost(postData);
+        console.log(data);
         this.$router.push('/main');
       } catch (error) {
         this.errorMessage = error.response.data.message;
       }
     },
+  },
+  async created() {
+    const { data } = await getPost(this.id);
+    this.title = data.title;
+    this.contents = data.contents;
   },
 };
 </script>
