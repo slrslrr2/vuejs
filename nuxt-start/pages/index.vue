@@ -25,6 +25,9 @@
           <span>{{ product.price }}</span>
         </li>
       </ul>
+      <div class="cart-wrapper">
+        <button class="btn" @click="moveToCartPage">장바구니 바로가기</button>
+      </div>
     </main>
   </div>
 </template>
@@ -68,6 +71,9 @@ export default {
     },
     moveToDetailPage(id) {
       this.$router.push(`detail/${id}`);
+    },
+    moveToCartPage() {
+      this.$router.push(`cart`);
     },
   },
 };

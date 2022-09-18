@@ -16,4 +16,8 @@ function fetchProductsByKeyword(keyword) {
   });
 }
 
-export { fetchProductById, fetchProductsByKeyword };
+function setCartProduct(id) {
+  console.log(id);
+}
+
+export { fetchProductById, fetchProductsByKeyword, setCartProduct };
