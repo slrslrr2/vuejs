@@ -23,14 +23,8 @@ export default {
     CartPage,
   },
   async asyncData({ store }) {
-    const data = await store.getters.getCartItems;
-    const products = data.map(product => {
-      return {
-        ...product,
-        imageUrl: `${product.imageUrl}?random=${Math.random()}`,
-      };
-    });
-    return { products };
+    await store.dispatch('FETCH_CART_ITEMS');
+    return { products: store.state.cartItems };
   },
 };
 </script>
